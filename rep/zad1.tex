@@ -12,7 +12,13 @@ przy którym następuje przebicie elektryczne wypełniającego
 linię powietrza.
 
 \section{Rozwiązanie}
-\label{zad1:fig:coax}
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[scale=0.5]{fig/zad1/coax}
+  \caption{Przekrój przez linie współosiową oraz symbole jej parametrów}
+  \label{zad1:fig:coax}
+\end{figure}
+
 Współosiową linie transmisyjną pokazano na rysunku~\ref{zad1:fig:coax}.
 W treści zadania powiedziano, że mamy doczynienia z linią powietrzną więc $\epsilon = \epsilon_0$ oraz $\mu = \mu_0$.
 Moc fali przenoszonej przez linie jest równa:
@@ -22,29 +28,29 @@ Moc fali przenoszonej przez linie jest równa:
 Ponieważ wyrażenia na pole elektryczne i magnetyczne w kartezjańskim układzie współrzędnych byłyby bardzo skomplikowane,
 należy zmienić układ współrzędnych na polarny:
 \begin{equation}
-  P = \frac{1}{2} \int\limits_0^{2\pi}\int\limits_a^b \bar{E}(\rho, \varphi) \cdot \bar{H}(\rho, \varphi) \rho \; \mathrm{d\rho} \mathrm{d\varphi}
+  P = \frac{1}{2} \int\limits_0^{2\pi}\int\limits_a^b \bar{E}(\rho, \phi) \cdot \bar{H}(\rho, \phi) \rho \; \mathrm{d\rho} \mathrm{d\phi}
 \end{equation}
 Pole elektryczne i magnetyczne mają postać:
 \begin{align}
   \bar{E}(\rho)    & = \frac{U_0\hat{\rho}}{\rho \ln \frac{b}{a}} \\
-  \bar{H}(\varphi) & = \frac{\bar{E}(\rho)\hat{\varphi}}{\eta_0}
+  \bar{H}(\phi) & = \frac{\bar{E}(\rho)\hat{\phi}}{\eta_0}
 \end{align}
 gdzie: \\
 \begin{tabular}{l @{ - } l}
   $\hat{\rho}$    & wersor w kierunko $\rho$, \\
-  $\hat{\varphi}$ & wersor w kierunku $\varphi$, \\
+  $\hat{\phi}$ & wersor w kierunku $\phi$, \\
   $\xi_0 = \sqrt{\frac{\mu_0}{\epsilon_0}}$ & impedancja falowa linii. \\
 \end{tabular}
 
 Możemy teraz policzyć moc fali przenoszonej przez linie:
 \begin{align}
-  P & =  \frac{1}{2} \int\limits_0^{2\pi}\int\limits_a^b \bar{E}(\rho, \varphi) \cdot \bar{H}(\rho, \varphi) \rho \; \mathrm{d\rho} \mathrm{d\varphi} \nonumber \\
-    & =  \frac{1}{2} \int\limits_0^{2\pi}\int\limits_a^b \frac{1}{\xi_0}\frac{U_0^2}{\rho^2\ln^2\frac{b}{a}} \rho \; \mathrm{d\rho} \mathrm{d\varphi} \nonumber \\
-    & =  \frac{1}{2} \int\limits_0^{2\pi}\int\limits_a^b \frac{1}{\xi_0}\frac{U_0^2}{\rho\ln^2\frac{b}{a}} \; \mathrm{d\rho} \mathrm{d\varphi} \nonumber \\
-    & =  \frac{1}{2} \frac{1}{\xi_0}\frac{U_0^2}{\ln^2\frac{b}{a}} \int\limits_0^{2\pi}\int\limits_a^b \frac{1}{\rho} \; \mathrm{d\rho} \mathrm{d\varphi} \nonumber \\
-    & =  \frac{1}{2} \frac{1}{\xi_0}\frac{U_0^2}{\ln^2\frac{b}{a}} \int\limits_0^{2\pi} \ln|\rho|\Big\arrowvert_a^b \; \mathrm{d\varphi} \nonumber \\
-    & =  \frac{1}{2} \frac{1}{\xi_0}\frac{U_0^2}{\ln^2\frac{b}{a}} \ln\frac{b}{a} \int\limits_0^{2\pi} 1 \; \mathrm{d\varphi} \nonumber \\
-    & =  \frac{1}{2} \frac{1}{\xi_0}\frac{U_0^2}{\ln\frac{b}{a}} \varphi\Big\arrowvert_0^{2\pi} \nonumber \\
+  P & =  \frac{1}{2} \int\limits_0^{2\pi}\int\limits_a^b \bar{E}(\rho, \phi) \cdot \bar{H}(\rho, \phi) \rho \; \mathrm{d\rho} \mathrm{d\phi} \nonumber \\
+    & =  \frac{1}{2} \int\limits_0^{2\pi}\int\limits_a^b \frac{1}{\xi_0}\frac{U_0^2}{\rho^2\ln^2\frac{b}{a}} \rho \; \mathrm{d\rho} \mathrm{d\phi} \nonumber \\
+    & =  \frac{1}{2} \int\limits_0^{2\pi}\int\limits_a^b \frac{1}{\xi_0}\frac{U_0^2}{\rho\ln^2\frac{b}{a}} \; \mathrm{d\rho} \mathrm{d\phi} \nonumber \\
+    & =  \frac{1}{2} \frac{1}{\xi_0}\frac{U_0^2}{\ln^2\frac{b}{a}} \int\limits_0^{2\pi}\int\limits_a^b \frac{1}{\rho} \; \mathrm{d\rho} \mathrm{d\phi} \nonumber \\
+    & =  \frac{1}{2} \frac{1}{\xi_0}\frac{U_0^2}{\ln^2\frac{b}{a}} \int\limits_0^{2\pi} \ln|\rho|\Big\arrowvert_a^b \; \mathrm{d\phi} \nonumber \\
+    & =  \frac{1}{2} \frac{1}{\xi_0}\frac{U_0^2}{\ln^2\frac{b}{a}} \ln\frac{b}{a} \int\limits_0^{2\pi} 1 \; \mathrm{d\phi} \nonumber \\
+    & =  \frac{1}{2} \frac{1}{\xi_0}\frac{U_0^2}{\ln\frac{b}{a}} \phi\Big\arrowvert_0^{2\pi} \nonumber \\
     & =  \frac{2\pi}{\xi_0}\frac{U_0^2}{\ln\frac{b}{a}} \label{eqn:zad1:power}
 \end{align}
 
