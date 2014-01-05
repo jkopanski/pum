@@ -54,3 +54,53 @@ def newton_raphson( func, a, b, args=(), tol=1e-8):
         error = zero - x
 
     return zero
+
+def n_fun( q, tol=1e-8):
+    """
+    Zwraca wartosc N potrzebna do wyznaczenia modulu
+
+    Parameters
+    ----------
+    q : float
+        stala modularna
+    tol : float, optional
+        dokladnosc
+
+    Returns
+    ----------
+    n : float
+        Wartosc parametru N.
+    """
+    n = q
+    old = 0
+    i = 1
+    while( n - old > tol):
+        old = n
+        n = old + q ** ( i * ( i - 1))
+        i = i + 1
+    return n
+
+def d_fun( q, tol=1e-8):
+    """
+    Zwraca wartosc D potrzebna do wyznaczenia modulu
+
+    Parameters
+    ----------
+    q : float
+        stala modularna
+    tol : float, optional
+        dokladnosc
+
+    Returns
+    ----------
+    d : float
+        Wartosc parametru D.
+    """
+    d = 0.5 + q
+    old = 0
+    i = 1
+    while( d - old > tol):
+        old = d
+        d = old + q ** ( i * i)
+        i = i + 1
+    return d
