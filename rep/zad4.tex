@@ -1,0 +1,64 @@
+\documentclass[rep.tex]{subfiles}
+\begin{document}
+
+\chapter{Zadanie 4}
+\label{zad4}
+\section{Treść}
+Zaprojektować symetryczną linię paskową, rys.~\ref{fig:zad4:stripline},
+o impedancji charakterystycznej~$Z_0 = 50~\Omega$.
+Podłoże linii stanowi dielektryk o $\epsilon_r = 2.56$, $\mu_r = 1$ i grubości $b = 2.8~mm$.
+Obliczenia wykonać, przy założeniu, że grubość przewodu wewnętrznego~$t = 0~mm$.
+Metodą różnic skończonych obliczyć impedancję charakterystyczną tej linii przyjmując,
+że przewód wewnętrzny~$t = 0.150~mm$.
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[scale=0.5]{fig/zad4/stripline}
+  \caption{Symetryczna linia paskowa}
+  \label{fig:zad4:stripline}
+\end{figure}
+
+\section{Rozwiązanie}
+\subsection{Nieskończenie cienki przewód wewnętrzny}
+Impedancja charakterystyczna symetrycznej linii paskowej wyraża się wzorem:
+\begin{equation}
+  Z_0(k) = 29.976 \pi \sqrt{\frac{\mu_r}{\epsilon_r}} \frac{K(k)}{K'(k)} \label{eqn:zad4:z}
+\end{equation}
+gdzie:
+\begin{equation}
+  k = \frac{1}{\operatorname{ch}\,(\frac{\pi w}{2b})} \label{eqn:zad4:k}
+\end{equation}
+przy założeniu nieskończenie cienkiego paska~($t = 0~mm$).
+Z równania~\ref{eqn:zad4:k} można wyznaczyć szerokość paska:
+\begin{equation}
+  w = \frac{2b}{\pi} \ln\big(\frac{1}{k} + \sqrt{\frac{1}{k^2} - 1}\big) \label{eqn:zad4:w}
+\end{equation}
+która to tworzy linie o impednacji~$Z_0$.
+
+W pierwszym kroku z równania~\ref{eqn:zad4:z} można wyznaczyć staosunek całek eliptycznych $\frac{K(k)}{K'(k)}$:
+\begin{equation}
+  \frac{K(k)}{K'(k)} = \frac{Z_0}{29.976 \pi}\sqrt{\frac{\epsilon_r}{\mu_r}}. \label{eqn:zad4:modk}
+\end{equation}
+Następnie można wyznaczyć stałą modularną~$q$:
+\begin{equation}
+  q = e^{- \pi \frac{K'(k)}{K(k)}}. \label{eqn:zad4:modq}
+\end{equation}
+Stała modularna z równania~\ref{eqn:zad4:modq} pozwala wyznaczyć wartość szeregów:
+\begin{align}
+  N &= \sum_{i=1}^\infty q^{i \times (i-1)}, \label{eqn:zad4:N} \\
+  D &= 0.5 + \sum_{i=1}^\infty q^{i \times i}. \label{eqn:zad4:D}
+\end{align}
+Szeregi~\ref{eqn:zad4:N} i~\ref{eqn:zad4:D} są szybko zbieżne i wystarzy już kilka pierwszych wyrazów aby uzyskać dobrą dokładność.
+W programie obliczanie wartości~$N$ oraz~$D$ zatrzymuję się automatycznie gdy osiągnięta zostła dokładność,
+która jest podawana jako parametr funkcji.
+
+Korzystając z wyznaczonych wartości można obliczyć moduł~$k$:
+\begin{equation}
+  k = \sqrt{q} \Big(\frac{N}{D}\Big)^2.
+\end{equation}
+
+Podstawiając wartość do równania~\ref{eqn:zad4:w} można obliczyć wymaganą szerokołś paska.
+Dla danych podanych w treści zadania wymagana wartość $w = 1.62012780313~mm$.
+
+\subsection{Przewód wewnętrzny o $t = 0.150~mm$}
+\end{document}
