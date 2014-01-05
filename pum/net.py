@@ -1,3 +1,5 @@
+import numpy as np
+
 class net:
     """Klasa reprezentujaca siatke do obliczen metoda roznic skonczonych"""
     def __init__(self, a, b, I, J, Is, Js, q=1, p=1, r=1):
@@ -42,20 +44,17 @@ class net:
         return u
 
     def liebmann(self, tol=1e-8):
-        Rm = 0
         k = 0
         while True:
+            Rm = 0.0
             k += 1
-            print 'k = {}'  .format( k)
-            print 'Rm = {}' .format( Rm)
-            print '{}'      .format( self.net)
             for j in range( 1, self.J - 1):
                 for i in range( 1, self.I - 1):
                     v = self.net[j*self.I + i]
                     self.net[j*self.I + i] = self.calc( i, j)
-                    R = abs( self.net[j*self.I + i] - v)
+                    R = np.abs(self.net[j*self.I + i] - v)
                     if Rm < R:
                         Rm = R
-            if k == 16:
+            if Rm < tol:
                 break
         return k

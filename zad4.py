@@ -28,4 +28,4 @@ print '{}' .format(line.net)
 line.init()
 print '{}' .format(line.net)
 
-line.liebmann( 1e-7)
+print 'k = {}' .format( line.liebmann( 1e-7))
