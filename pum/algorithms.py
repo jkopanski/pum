@@ -45,7 +45,7 @@ def newton_raphson( func, a, b, args=(), tol=1e-8):
         x = zero
         fd1 = func( *(x - delta_x,) + args)
         fd2 = func( *(x + delta_x,) + args)
-        fderiv = ( fd2 -fd1) / delta_x
+        fderiv = ( fd2 -fd1) / ( 2 * delta_x)
         if fderiv == 0:
             msg = "derivative was zero."
             warnings.warn(msg, RuntimeWarning)
