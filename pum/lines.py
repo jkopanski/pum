@@ -1,5 +1,6 @@
 import scipy.constants as const
 import numpy as np
+import algorithms as alg
 
 def coax_z(a, b, mu, epsilon): # impedance of coaxial line
     return np.sqrt(const.mu_0 * mu / ( const.epsilon_0 * epsilon)) * np.log( a / b) / ( 2 * const.pi)
@@ -79,3 +80,28 @@ def cylindrical_flat_coupled( s, d, h, mu, epsilon):
     Z0e = 59.952 * np.log( 0.523962 / ( f1 * f2 * f3))
     Z0o = 59.952 * np.log( ( 0.523962 * f3) / ( f1 * f4))
     return ( Z0e, Z0o)
+
+def stripline_coupled( w, s, b, t, mu, epsilon):
+    if t == 0:
+        ke = np.tanh( ( const.pi * w) / ( 2 * b)) * \
+             np.tanh( ( const.pi / 2) * ( ( w + s) / b))
+        ko = np.tanh( ( const.pi * w) / ( 2 * b)) * \
+             ( 1 / np.tanh( ( const.pi / 2) * ( ( w + s) / b)))
+        kpke = 1 / alg.k_int( ke)
+        kpko = 1 / alg.k_int( ko)
+        Z0e = 29.976 * const.pi * np.sqrt( mu / epsilon) * kpke
+        Z0o = 29.976 * const.pi * np.sqrt( mu / epsilon) * kpko
+    else:
+        theta = ( const.pi * s) / ( 2 * b)
+        ae  = ( np.log( 2) + np.log( 1 + np.tanh( theta))) / \
+              ( 2 * const.pi * np.log( 2))
+        ao  = ( np.log( 2) + np.log( 1 + ( 1 / np.tanh( theta)))) / \
+              ( 2 * const.pi * np.log( 2))
+        c   = 2 * np.log( ( 2 * b - t) / ( b - t)) - \
+              ( ( t / b) * np.log( ( t * ( 2 * b - t)) / ( ( b - t) ** 2)))
+        Z0e = ( 30 * const.pi * ( b - t)) / \
+              ( np.sqrt( epsilon) * ( w + ( ae * b * c)))
+        Z0o = ( 30 * const.pi * ( b - t)) / \
+              ( np.sqrt( epsilon) * ( w + ( ao * b * c)))
+    return (Z0e, Z0o)
+

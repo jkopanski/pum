@@ -55,7 +55,7 @@ def newton_raphson( func, a, b, args=(), tol=1e-8):
 
     return zero
 
-def n_fun( q, tol=1e-8):
+def n_fun( q, tol=1e-19):
     """
     Zwraca wartosc N potrzebna do wyznaczenia modulu
 
@@ -71,8 +71,8 @@ def n_fun( q, tol=1e-8):
     n : float
         Wartosc parametru N.
     """
-    n = q
-    old = 0
+    n = 0.0
+    old = -1.0
     i = 1
     while( n - old > tol):
         old = n
@@ -80,7 +80,7 @@ def n_fun( q, tol=1e-8):
         i = i + 1
     return n
 
-def d_fun( q, tol=1e-8):
+def d_fun( q, tol=1e-19):
     """
     Zwraca wartosc D potrzebna do wyznaczenia modulu
 
@@ -96,11 +96,25 @@ def d_fun( q, tol=1e-8):
     d : float
         Wartosc parametru D.
     """
-    d = 0.5 + q
-    old = 0
+    d = 0.5
+    old = 0.0
     i = 1
     while( d - old > tol):
         old = d
         d = old + q ** ( i * i)
         i = i + 1
     return d
+
+def k_int( k, tol=1e-8):
+    old = 0
+    k0 = k
+    k0p = np.sqrt( 1 - ( k ** 2))
+    k_int = ( 1 + k0) / ( 1 + k0p)
+    i = 1
+    while( k_int - old > tol):
+        old = k_int
+        k0  = ( 2 / ( 1 + k0 )) * np.sqrt( k0)
+        k0p = ( 2 / ( 1 + k0p)) * np.sqrt( k0p)
+        k_int = k_int * ( 1 + k0) / ( 1 + k0p)
+        i += 1
+    return k_int

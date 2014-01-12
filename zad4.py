@@ -10,7 +10,7 @@ b   = 2.8 * const.milli
 
 modk = 50 / ( 29.976 * const.pi * np.sqrt( mu / eps))
 q = np.exp( - const.pi * modk)
-k = np.sqrt( q) * ( ( alg.n_fun( q) / alg.d_fun( q) ** 2))
+k = np.sqrt( q) * ( ( alg.n_fun( q) / alg.d_fun( q)) ** 2)
 w = ( 2 * b / const.pi) * np.log( ( 1 / k) + np.sqrt( ( 1 / k ** 2) - 1))
 
 print 'w = {} mm' .format( w / const.milli)
