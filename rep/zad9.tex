@@ -10,6 +10,44 @@ powinien zapewniać obustronne dopasowanie w nieskończenie szerokim paśmie cz�
 Zaprojektować równoważną wersję tego tłumika typu~$\Pi$.
 
 \section{Rozwiązanie}
+W pierwszym kroku należy sprawdzić realizowalność dzielnika.
+Należy wyznaczyć stosunek impedancji~$r$:
+\begin{equation}
+  r = \Big(\frac{Z_{01}}{Z_{02}}\Big)^{\pm1}
+\end{equation}
+przy czym znak przy wykładniku dobiera się tak, aby:~$r > 1$.
+
+Dla przypadku określonego w treści zadania:
+\begin{align}
+  r &= \frac{Z_{02}}{Z_{01}} = \frac{60}{50} \nonumber \\
+  &= 1.2 \nonumber
+\end{align}
+
+Natępnie mozna obliczyć minimalne tłumienie jakie wprowadza dzielnik:
+\begin{equation}
+  L_{min} = 10 \log(\sqrt{r} + \sqrt{r - 1})
+\end{equation}
+Podstawiając wartości określone w treści zadania otrzymuję się~$L_{min} = 4.33507363245~dB$ co jest mniejsze od wymaganego~$L = 10~dB$.
+Oznacza to, że tłumik jest realizowalny.
+
+Projekt tłumików zaczyna się od przekształcenia wartości tłumienia z miary decybelowej na liniową:
+\begin{equation}
+  N = 10^{(\frac{L}{10})} = 10
+\end{equation}
+
 \subsection{Dzielnik typu $T$}
+W celu zaprojektowania tłumika typu~$T$ wyznacza się wartości rezystancji zgodnie ze wzorami:
+\begin{align}
+  R_3 &= \frac{2\sqrt{N \times Z_{01} \times Z_{02}}}{N - 1} &= 38.490017946~\Omega \\
+  R_2 &= Z_{02} \frac{N + 1}{N - 1} - R_3 &= 34.8433153874~\Omega \\
+  R_1 &= Z_{01} \frac{N + 1}{N - 1} - R_3 &= 22.6210931651~\Omega
+\begin{align}
+
 \subsection{Dzielnik typu $\Pi$}
+W celu zaprojektowania tłumika typu~$\Pi$ wyznacza się wartości rezystancji zgodnie ze wzorami:
+\begin{align}
+  R_a &= \frac{(N - 1) \sqrt{Z_{01}Z_{02}}}{2\sqrt{N}} &= 77.9422863406~\Omega \\
+  R_b &= \frac{Z_{01}R_a(N - 1)}{R_a(N + 1) - Z_{01}(N - 1)} &= 86.0997286466~\Omega \\
+  R_c &= \frac{Z_{02}R_a(N - 1)}{R_a(N + 1) - Z_{02}(N - 1)} &= 132.619585539~\Omega
+\end{align}
 \end{document}
