@@ -1,0 +1,29 @@
+\documentclass[rep.tex]{subfiles}
+\begin{document}
+
+\chapter{Zadanie 10}
+\label{zad10}
+\section{Treść}
+Zaprojektować schodkowy, ćwierćfalowy transformator impedancji o charakterystyce
+równomiernie falistej (Czebyszewa) dopasowujący dwie linie współosiowe o impedancjach
+charakterystycznych~$Z_{01} = 30~\Omega$ i $Z_{02} = 75~\Omega$.
+Transformator ten powinien zapewniać w paśmie $2 3~GHz$ dopasowanie z $WFS \le 1.12$.
+Projekt transformatora wykonać przy założeniu,
+że przewody zewnętrzne obu dopasowywanych linii mają średnicę~$a = 7~mm$.
+Zaprojektować równoważny wariant tego transformatora w postaci transformatora II klasy,
+tj. transformatora złożonego z niewspółmiernych odcinków linii o impedancjach
+charakterystycznych~$Z_{01} = 30~\Omega$ i $Z_{02} = 75~\Omega$.
+
+\section{Rozwiązanie}
+Projekt transformatora rozpoczyna się od określenia ilości sekcji niezbedznych do realizacji.
+Minimalna ilość sekcji potrzebnych do realizacji transformatora jest wieksza lub równa:
+\begin{align}
+  n &\ge \frac{\operatorname{arch}\Bigg(\frac{R - 1}{\Gamma_d \times (r + 1)}\Bigg)}{\operatorname{arch}\Bigg(]frac{1}{\cos\Big(\pi \frac{1 - \omega/2}{2}\Big)} = 1.47234760626 \\
+  n &= 2
+\end{align}
+
+\begin{align}
+  r &= \frac{Z_{02}}{Z_{01}} &= 2.5 \\
+  \Gamma_d &= \frac{WFS - 1}{WFS + 1} &= 0.0566037735849 \\
+\end{align}
+\end{document}
