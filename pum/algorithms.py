@@ -27,7 +27,8 @@ def newton_raphson( func, a, b, args=(), tol=1e-8):
     ###
     x0 = a * 1.0 # mnozenie przez 1.0 sprawia, ze zmienna staje sie float
     delta_x = ( b - a) / 25
-    fval_min = np.abs( func( *(x0,) + args))
+    myargs = (x0,) + args
+    fval_min = np.abs( func( *myargs))
     zero = x0
     for x0 in np.arange( a, b, delta_x):
         myargs = (x0,) + args
