@@ -1,0 +1,32 @@
+\documentclass[rep.tex]{subfiles}
+\begin{document}
+
+\chapter{Zadanie 11}
+\label{zad11}
+\section{Treść}
+Zaprojektować jednosekcyjny, zbliżeniowy sprzęgacz kierunkowy o sprzężeniu $C = 13~dB$ przy częstotliwości $f = 1.34~GHz$.
+Sprzęgacz zrealizować z odcinków symetrycznych linii paskowych (pojedynczych i sprzężonych) przyjmując,
+że podłoże linii stanowi dielektryk o~$\epsilon_r = 2 56$, $\mu_r = 1$ i grubości $b = 2.8~mm$.
+Projekt wykonać przy założeniu, że grubość przewodów wewnętrznych jest pomijalnie mała z grubością dielektryka $b = 2.8~mm$
+a impedancja charakterystyczna linii obciążających sprzęgacz jest równa $Z_0 = 50~\Omega$.
+
+\section{Rozwiązanie}
+Projekt sprzęgacza zaczyna się od wyznaczenia wartości napięciowego współczynnika sprzężenia:
+\begin{align}
+  k &= 10^{-\frac{|C|}{20}} \label{eqn:zad11:k} \\
+  &= 0.1 \nonumber
+\end{align}
+Następnie, na jego podstawie, wyznacza się wartości impedancji charakterystycznych:
+\begin{align}
+  Z_{0e} &= Z_0\sqrt{\frac{1 + k}{1 - k}} &= 55.277079839256629~\Omega \\
+  Z_{0o} &= Z_0\sqrt{\frac{1 - k}{1 + k}} &= 45.226701686664533~\Omega \\
+\end{align}
+
+Wyznaczone impedancje to prawie koniec projektu.
+Realizacja sprzęgacza w technice linii paskowych sprowadza się do zagadnienia rozważanego w rozdziale~\ref{zad8}.
+Szerokość i szczelina między ścieżkami opisane są zależnościami~\ref{eqn:zad8:w} i \ref{eqn:zad8:s}.
+Dla wartości podanych w treści zadania potrzebne parametry linii to $w = 2.01899117162~mm$ i $s = 0.917670241997~mm$.  
+
+Długość sprzęgacza powinna wynosić~$\frac{1}{4}\times\lambda$.
+Dla zadanej częstotliwości i parametrów podłoża sprzęgacza~$\lambda = 13.9828571828~cm$, co daję długość sprzęgacza $l = 3.49571429571~cm$.
+\end{document}
