@@ -7,7 +7,7 @@
 Zaprojektować schodkowy, ćwierćfalowy transformator impedancji o charakterystyce
 równomiernie falistej (Czebyszewa) dopasowujący dwie linie współosiowe o impedancjach
 charakterystycznych~$Z_{01} = 30~\Omega$ i $Z_{02} = 75~\Omega$.
-Transformator ten powinien zapewniać w paśmie $2 3~GHz$ dopasowanie z $WFS \le 1.12$.
+Transformator ten powinien zapewniać w paśmie $2 \div 3~GHz$ dopasowanie z $WFS \le 1.12$.
 Projekt transformatora wykonać przy założeniu,
 że przewody zewnętrzne obu dopasowywanych linii mają średnicę~$a = 7~mm$.
 Zaprojektować równoważny wariant tego transformatora w postaci transformatora II klasy,
@@ -15,15 +15,81 @@ tj. transformatora złożonego z niewspółmiernych odcinków linii o impedancja
 charakterystycznych~$Z_{01} = 30~\Omega$ i $Z_{02} = 75~\Omega$.
 
 \section{Rozwiązanie}
+\subsection{Transformator schodkowy}
+\label{zad10:step}
 Projekt transformatora rozpoczyna się od określenia ilości sekcji niezbedznych do realizacji.
 Minimalna ilość sekcji potrzebnych do realizacji transformatora jest wieksza lub równa:
 \begin{align}
-  n &\ge \frac{\operatorname{arch}\Bigg(\frac{R - 1}{\Gamma_d \times (r + 1)}\Bigg)}{\operatorname{arch}\Bigg(]frac{1}{\cos\Big(\pi \frac{1 - \omega/2}{2}\Big)} = 1.47234760626 \\
-  n &= 2
+  n &\ge \frac{\operatorname{arch}\Big(\frac{R - 1}{\Gamma_d \times (r + 1)}\Big)}{\operatorname{arch}\Big(\frac{1}{\cos(\pi \frac{1 - \omega}{2})}\Big)} = 1.47234760626 \\
+  n &= 2 \nonumber
+\end{align}
+gdzie:\\
+\begin{align}
+  R &= \frac{Z_{02}}{Z_{01}} &= 2.5, \nonumber \\
+  \Gamma_d &= \frac{WFS - 1}{WFS + 1} &= 0.0566037735849. \nonumber
 \end{align}
 
+Następnie należy policzyć wartość impedancji kolejnych sekcji transformatora.
+Uzyskuję się je poprzez przemnożenie impedancji poprzedniego fragmentu linii poprzez współczynnik~$V_K$.
+Sposób obliczania współczynników~$V_K$ jest zależny od stopnia transformatora i dokładne wzory są podane w~\cite{obwody}.
+Dla przypadku podanego w treści zadania mamy:
 \begin{align}
-  r &= \frac{Z_{02}}{Z_{01}} &= 2.5 \\
-  \Gamma_d &= \frac{WFS - 1}{WFS + 1} &= 0.0566037735849 \\
+  Z_{01} &= 30~\Omega \nonumber \\
+  Z_{1~} &= Z_{01} \times V_1 &= 30~\Omega \times 1.27247425628 &= 38.1742276884~\Omega \nonumber \\
+  Z_{2~} &= Z_1 \times V_2 &= 38.1742276884~\Omega \times 1.54398116863 &= 58.9402886777~\Omega \nonumber \\
+  Z_{02} &= 75~\Omega \nonumber
 \end{align}
+
+Znając impedancje kolejnych odcinków linii oraz transformatora możemy obliczyć szerokości przewodów wewnętrznych linii współosiowych realizujących dane impedancję.
+W tym celu należy posłużyć się zależnością:
+\begin{equation}
+  b = a \times \exp\Bigg(- \frac{Z_k}{59.952\times\sqrt{\frac{\mu_r}{\epsilon_r}}}\Bigg)
+\end{equation}
+
+Dla danych z treści z zdania oraz obliczonych impedancji:
+\begin{align}
+  b_{01} &= 2.84549286046~mm  \nonumber \\
+  b_{1~} &= 2.22656956016~mm  \nonumber \\
+  b_{2~} &= 1.19406077254~mm  \nonumber \\
+  b_{02} &= 0.73747396094~mm  \nonumber
+\end{align}
+
+Ostatnim etapem projektu jest wyznaczenie długości każdego z odcinków tworzących transformator.
+Długość elektryczna powinna wynośić~$\frac{\lambda}{4}$.
+Długość fizyczną wyznacza się z zależności:
+\begin{equation}
+  l\Big(\frac{\pi}{4}\Big) = \frac{c}{\sqrt{\mu_r/\epsilon_r}4f_0}
+\end{equation}
+Dla danych z zadania wynosi:~$l\Big(\frac{\pi}{4}\Big) = 5.39298883136~cm$.
+
+\subsection{Transformator impedancji II klasy}
+Transformator złożony z niewspółmiernych odcinków linii różni się od transformatora schodkowego tym,
+że składa się z odcinków linii o znanej impedancji charakterystycznej~$Z_0$ i $R\times Z_0$,
+a projektowanie polega na doborze odpowiedniej ilości sekcji oraz długości elektrycznych odcinków.
+W przypadku tego zadania mamy $Z_0 = 30~\Omega$, $R = \frac{75}{30} = 2.5$.
+
+W pracy~\cite{obwody} przedstawiono metory projektowania dwu-, cztero, sześcio- i ośmiosekcyjnych transformatorów impednacji II klasy.
+W przypadku tego zadania, ze względu warunek odpowiadania transformatorowi zaprojektowanemu w sekcjii~\ref{zad10:step} należy zaprojektować transformator czterosekcyjny.
+
+Długości elektryczne kolejnych sekcji transormatora wynoszą~$\theta_i(f)$ i są związane z długością elektryczną pierwszej sekcji~$\theta(f)$ zależnością:
+\begin{equation}
+  \theta_i(f) = a_i\theta(f) \quad dla \quad i = 2, 3, \ldots n,
+\end{equation}
+gdzie~$a_i$ jest $i$-tą składową $n$-wymiarowego wektora $A = (1, a_2, a_3, \ldots, a_n)$
+
+Projektowanie transformatora sprowadza się do aproksymacji funkcji wnoszonego tłumienia $L(A, \theta)$ w paśmie $[\theta_a, x\theta_a]$ gdzie $\theta_a$ i $x\theta_a$ oznaczają długości elektryczne pierwszej sekcji dla najmniejszej i największej częstotliwości pracy transformatora.
+
+Z wymagań przedstawionych w~\cite{obwody} mamy: $a_2 = a_3$ i $a_4 = 1$.
+Dlatego szukane wartości to:
+\begin{align}
+  \theta_a &= \theta(f_1) = \frac{V_4}{1 + x}, \label{eqn:zad10:theta} \\
+  a_2 &= \frac{f_3(r) + f_4(r)(2 - x)}{V_4}, \label{eqn:zad10:a2}
+\end{align}
+Obliczone w ten sposób parametry linii mają charakter quasi-czebyszewowski.
+W celu dokładniejszego odwzorowania należy wynik skorygować stosując metodę Remeza, stosując wartości obliczone za pomocą \ref{eqn:zad10:theta} i \ref{eqn:zad10:a2} jako punkt startowy.
+\begin{align}
+  \theta_a &= 0.265397249812 \nonumber \\
+  a_2 &= 2.73683917651 \nonumber \\
+\end{align}
+
 \end{document}
