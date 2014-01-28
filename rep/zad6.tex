@@ -12,7 +12,7 @@ Obliczyć długość fali w tak zaprojektowanej linii wiedząc, ze jej częstotl
 \begin{figure}[!htbp]
   \centering
   \includegraphics[scale=0.5]{fig/zad6/microstrip}
-  \caption{Nieymetryczna linia paskowa}
+  \caption{Niesymetryczna linia paskowa}
   \label{fig:zad6:microstrip}
 \end{figure}
 
@@ -23,7 +23,7 @@ Pomimo swojej popularności ciągle nie są znane analityczne zależności proje
 Dlatego na potrzeby projektu posłużono się wzorami zawartymi w~\cite{obwody}.
 
 Rozwiązanie zadania polega na znalezieniu szerokości paska, jaki będzie tworzył linie o wymaganej impedancji.
-W tym celu należy numerycznie rozwiązanć równanie:
+W tym celu należy numerycznie rozwiązać równanie:
 \begin{equation}
   Z_0(u, f) - Z_0 = 0 \label{eqn:zad6:target}
 \end{equation}
@@ -38,7 +38,7 @@ Impedancje linii oblicza się wzorem:
 \begin{equation}
   Z_0(u, f) = \frac{60}{\sqrt{\epsilon_{ef}(f)}} \ln\Bigg[\frac{f(u)}{u} + \sqrt{1 + \bigg(\frac{2}{u}\bigg)^2}\Bigg] \label{eqn:zad6:Z0}
 \end{equation}
-Pomocnicze równania niezbędne do obliczenia impedancji zawartę są~w~\cite{obwody}.
+Pomocnicze równania niezbędne do obliczenia impedancji zawarte są~w~\cite{obwody}.
 
 Należy zwrócić uwagę na to, że wzór~\ref{eqn:zad6:Z0} jest słuszny w przypadku gdy przewód wewnętrzny jest nieskończenie cienki~$t = 0$.
 Gdy chcemy uwzględnić grubość paska należy od~$u$ dla którego równanie~\ref{eqn:zad6:target} jest spełnione odjąć poprawkę:
@@ -51,13 +51,13 @@ Wartość szerokości paska~$w$ dla którego impedancja wynosi~$50~\Omega$ wynos
 
 \subsection{Długość fali}
 Pole elektromagnetyczne w niesymetrycznej linii paskowej rozchodzi się, częściowo poprzez dielektryk a częściowo w powietrzu.
-Dlatego należy obliczyć efektywną prznikalność dielektryczną:
+Dlatego należy obliczyć efektywną przenikalność dielektryczną:
 \begin{align}
-  \epsilon_{eff}(u, f) &= \frac{\epsilon_{eff}(u, 0) + \epsilon_rp(u, f)}{1 + p(u, f)}
+  \epsilon_{eff}(u, f) &= \frac{\epsilon_{eff}(u, 0) + \epsilon_rp(u, f)}{1 + p(u, f)} \\
   \epsilon_{eff}(u, 0) &= \frac{\epsilon_r + 1}{2} + \frac{\epsilon_r - 1}{2}\Big(1 + \frac{10}{u}\Big)^{-a(u)\times b(\epsilon_r)}
 \end{align}
 
-Mając obliczoną efektywną prznikalność elektryczną można obliczyć długość fali rozchodzącej się w linii.
+Mając obliczoną efektywną przenikalność elektryczną można obliczyć długość fali rozchodzącej się w linii.
 \begin{equation}
   \lambda = \frac{c_{osr}}{f} = \frac{c}{\sqrt{\epsilon_{eff}}\times f} \label{eqn:zad6:lambda}
 \end{equation}

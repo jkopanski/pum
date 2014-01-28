@@ -9,11 +9,32 @@ def skew_coax_z( c, a, b, mu, epsilon):
     x = ( b + ( a * a - ( 4 * c * c)) / b) / (2 * a)
     return 59.952 * np.sqrt( mu / epsilon) * np.log( x + np.sqrt( x * x - 1))
 
+def square_coax( b, t, mu, epsilon):
+    kkp = ( 1 - ( t / b)) / ( 1 + ( t / b))
+    qp = np.exp( - const.pi * ( 1 / kkp))
+    p = np.sqrt( qp) * ( ( alg.n_fun( qp) / alg.d_fun( qp)) ** 2)
+    q = np.sqrt( 1 - ( p ** 2))
+    k = ( ( p - q) ** 2) / ( ( p + q) ** 2)
+    kpk = 1 / alg.k_int( k)
+    return 47.086 * kpk / np.sqrt( epsilon)
+
 def cylindrical_flat( d, b, mu, epsilon): # impedance of cylindrical flat line
     R = const.pi * d / (4 * b)
-    x = 1 + 2 * np.sinh( R) ** 2
-    y = 1 - 2 * np.sin( R) ** 2
-    return 59.952 * np.sqrt( mu / epsilon) * ( np.log( np.sqrt( x) + np.sqrt( y) / np.sqrt( x - y)) - R**4 / 30 + 0.014 * ( R**8))
+    x = 1 + ( 2 * ( np.sinh( R) ** 2))
+    y = 1 - ( 2 * ( np.sin( R) ** 2))
+    return 59.952 * np.sqrt( mu / epsilon) * \
+        ( np.log( ( np.sqrt( x) + np.sqrt( y)) / \
+                  ( np.sqrt( x - y))) - \
+                  ( R**4 / 30) + \
+                  ( 0.014 * ( R**8)))
+
+def stripline(w, t, h, mu, epsilon):
+    m  = 6 * ( h - t) / ( 3 * h - t)
+    dw = t * ( 1 - \
+               ( np.log( ( ( t / ( 2 * h - t)) ** 2) + \
+                         ( ( ( 0.0796 * t) / ( 1.1 * t + W)) ** m)) / 2)) / const.pi
+    A  = 4 * ( h - t) / ( const.pi * ( w + dw))
+    return 30 * np.log( 1 + A * ( 2 * A + np.sqrt( 4 * ( A ** 2) + 6.27))) / np.sqrt( epsilon)
 
 def microstrip(w, t, h, f, mu, epsilon):
     u  = w / h

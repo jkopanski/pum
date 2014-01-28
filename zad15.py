@@ -18,6 +18,26 @@ Z3  = Z0 / np.sqrt( 2)
 
 print( 'Z1 = {}; Z3 = {}' .format( Z1, Z3))
 
+def find_w( Z0, b, t, mu, eps):
+    m  = 6 * ( b - t) / ( 3 * b - t)
+    B  = np.exp( Z0 * np.sqrt( eps) / 30)
+    W  = 8 * ( ( b - t) / const.pi) * ( np.sqrt( B + 0.568) / ( B - 1))
+    dw = t * \
+         ( 1 - \
+           ( np.log( ( ( t / ( 2 * b - t)) ** 2) + \
+                     ( ( ( 0.0796 * t) / ( W - (0.26*t))) ** m) / 2))) / const.pi
+    return W - dw
+
+print 'wt = {}' .format( find_w( 30, \
+                                 2*const.milli, \
+                                 0.01*const.milli, \
+                                 1, \
+                                 10.20) / const.milli)
+
+print 'w0 = {}' .format( find_w( Z0, b, t, 1, 1) / const.milli)
+print 'w1 = {}' .format( find_w( Z1, b, t, 1, 1) / const.milli)
+print 'w3 = {}' .format( find_w( Z3, b, t, 1, 1) / const.milli)
+
 def coupling(f, f0):
     theta  = ( const.pi / 2) * f / f0
     c = np.cos( theta)
@@ -38,4 +58,6 @@ def coupling(f, f0):
 
 freq = np.linspace( f1, f2)
 line, = plt.plot( freq, coupling( freq, f0))
+plt.xlabel( 'czestotliwosc [Hz]')
+plt.ylabel( 'izolacja I [dB]')
 plt.show()

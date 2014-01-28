@@ -4,10 +4,11 @@ import numpy           as np
 import pum.algorithms  as alg
 from pum.lines import *
 from pum.net import *
+
 mu  = 1
 eps = 2.56
 b   = 2.8 * const.milli 
-C   = 13
+C   = 13.0
 Z0  = 50
 f0  = 1.34 * const.giga
 
@@ -15,7 +16,7 @@ k = 10 ** ( - np.abs(C) / 20)
 print 'k = {}' .format( k)
 Z0e = Z0 * np.sqrt( ( 1 + k) / ( 1 - k))
 Z0o = Z0 * np.sqrt( ( 1 - k) / ( 1 + k))
-print '(Z0e, Z0o) = {}' .format( Z0e, Z0o)
+print '(Z0e, Z0o) = {}; {}' .format( Z0e, Z0o)
 
 
 modke = Z0e / ( 29.976 * const.pi * np.sqrt( mu / eps))

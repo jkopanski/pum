@@ -9,8 +9,24 @@ Sprzęgacz zrealizować z odcinków niesymetrycznej linii paskowej przyjmując, 
 Projekt wykonać przy założeniu, że grubość przewodu wewnętrznego $t = 0.035~mm$ a impedancja charakterystyczna linii obciążających sprzęgacz jest równa $Z_0 = 50~\Omega$.
 Wyznaczyć częstotliwościową charakterystykę sprzężenia $C(f)~[dB]$ w paśmie od $f = 1.75~GHz$ do $f = 2.25~GHz$.
 
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=0.5\linewidth]{fig/zad12/coupler_1}
+  \caption{Schemat elektryczny sprzęgacza}
+  \label{fig:zad12:coupler1}
+\end{figure}
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=0.5\linewidth]{fig/zad12/coupler_2}
+  \caption{Realizacja sprzęgacza z niesymetrycznych linii paskowych}
+  \label{fig:zad12:coupler2}
+\end{figure}
+
 \section{Rozwiązanie}
 \subsection{Projekt sprzęgacza}
+Rysunki~\ref{fig:zad12:coupler1} i~\ref{fig:zad12:coupler2} przedstawiają projektowany sprzęgacz.
+Sygnał we wrotach 4 jest w przeciwfazie a we wrotach 3 w kwadraturze.
 Dwugałęziowy sprzęgacz kierunkowy może transformować impedancję.
 Jednak w treści zadania zaznaczono, że jest on obciążony liniami o impedancji charakterystycznej~$Z_0 = 50~\Omega$.
 Stąd parametr~$R = 1$.
@@ -20,19 +36,19 @@ Współczynnik napięciowego sprzężenia wynosi:
   k &= \frac{1}{\sqrt{10^{\frac{C}{10}} - 1}} \\
   &= 0.829109611422 \nonumber
 \end{align}
-Następnie podstawie wspólczynnika~$k$, wyznacza się wartości impedancji charakterystycznych:
+Następnie podstawie współczynnika~$k$, wyznacza się wartości impedancji charakterystycznych:
 \begin{align}
   Z_1 &= \frac{Z_0}{k} &= 60.3056571908~\Omega \\
   Z_2 &= Z_0\sqrt{\frac{R}{1 + k^2}} &= 38.4908989956~\Omega \\
   Z_3 &= Z_0\frac{R}{k} &= 60.3056571908~\Omega
 \end{align}
 
-Wyznaczone impedancje należy zamienić na odcinki nisymetrycznych linii paskowych tak samo jak było to wykonane w rozdziale~\ref{zad6}.
-Szerokośi ścieżek wynoszą:
+Wyznaczone impedancje należy zamienić na odcinki niesymetrycznych linii paskowych tak samo jak było to wykonane w rozdziale~\ref{zad6}.
+Szerokości ścieżek wynoszą:
 \begin{align}
-  w1 &= 1.8979728122~mm \nonumber \\
-  w2 &= 4.0140935583~mm \nonumber \\
-  w3 &= 1.8979728122~mm \nonumber
+  w1 &= 1.90100127159~mm \nonumber \\
+  w2 &= 4.01397627035~mm \nonumber \\
+  w3 &= 1.90100127159~mm \nonumber
 \end{align}
 
 Podobnie jak w rozdziale~\ref{zad6} aby wyznaczyć długość odcinków ćwierćfalowych, należy obliczyć długość fali rozchodzącej się w linii.
@@ -40,9 +56,9 @@ Długość fali zależy od efektywnej przenikalności dielektrycznej~$\epsilon_{
 Dlatego obliczono 3 różne długości.
 Dla danych z treści zadania mamy:
 \begin{align}
-  \frac{\lambda_1}{4} &= 3.11163135846~cm \nonumber \\
-  \frac{\lambda_2}{4} &= 3.00913349277~cm \nonumber \\
-  \frac{\lambda_3}{4} &= 3.11163135846~cm \nonumber 
+  \frac{\lambda_1}{4} &= 3.11142895539~cm \nonumber \\
+  \frac{\lambda_2}{4} &= 3.00913769452~cm \nonumber \\
+  \frac{\lambda_3}{4} &= 3.11142895539~cm \nonumber 
 \end{align}
 
 \subsection{Charakterystyka sprzęgacza}
@@ -58,4 +74,12 @@ W celu wyznaczenia charakterystyki częstotliwościowej wartości sprzężenie n
 
 Dokładne zależności podane zostały w~\cite{obwody}.
 Charakterystykę sprzęgacza zaprezentowano na rys.~\ref{fig:zad12:freq}.
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[scale=0.5]{fig/zad12/freq}
+  \caption{Charakterystyka częstotliwościowa sprzęgacza}
+  \label{fig:zad12:freq}
+\end{figure}
+
 \end{document}

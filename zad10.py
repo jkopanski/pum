@@ -30,8 +30,8 @@ print 'np = {0}; n = {1}' .format( nx, n)
 if n == 1:
     V = np.sqrt( r)
 elif n == 2:
-    mu   = np.sin( const.pi * w / 4)
-    c    = ( ( r - 1) * ( mu ** 2)) / ( 2 * ( 2 - ( mu ** 2)))
+    u   = np.sin( const.pi * w / 4)
+    c    = ( ( r - 1) * ( u ** 2)) / ( 2 * ( 2 - ( u ** 2)))
     V1 = np.sqrt( ( c ** 2) + r) + c
     V2 = r / V1
     V  = (V1, V2)
@@ -42,7 +42,7 @@ Z1 = Z01 * np.sqrt( V[0])
 Z2 = Z1 * V[1]
 
 print 'Z1 = {0}; Z2 = {1}' .format( Z1, Z2)
-
+print 'a = {}; Z01 = {}; mu = {}; eps = {}' .format( a, Z01, mu, epsilon)
 b01 = a * np.exp( - Z01 / ( 59.952 *np.sqrt(mu/epsilon)))
 b1  = a * np.exp( - Z1 / ( 59.952 *np.sqrt(mu/epsilon)))
 b2  = a * np.exp( - Z2 / ( 59.952 *np.sqrt(mu/epsilon)))
@@ -97,17 +97,17 @@ ast = ( f3 + ( f4 * ( 2 - x))) / v4
 
 print 'theta = {0}; a2 = {1}' .format( ts, ast)
 
-a2 = ast
-freq = f0
-L = T21( ast, f1)
-print 'equ = {}' .format( equ(( ast, freq, L)))
-print 'a2 = {}; f = {}, L = {}' .format( a2, freq, L)
+# a2 = ast
+# freq = f0
+# L = T21( ast, f1)
+# print 'equ = {}' .format( equ(( ast, freq, L)))
+# print 'a2 = {}; f = {}, L = {}' .format( a2, freq, L)
 
-while np.sqrt( T21( a2, f1)**2 + T21( a2, freq)**2 + T21( a2, f2)**2) > 1e-6:
-    df, da, dL = opt.fsolve( equ, ( ast, freq, L))
-    a2 += da
-    freq += df
-    L += dL
-    print 'a2 = {}; f = {}, L = {}' .format( da, df, dL)
+# while np.sqrt( T21( a2, f1)**2 + T21( a2, freq)**2 + T21( a2, f2)**2) > 1e-6:
+#     df, da, dL = opt.fsolve( equ, ( ast, freq, L))
+#     a2 += da
+#     freq += df
+#     L += dL
+#     print 'a2 = {}; f = {}, L = {}' .format( da, df, dL)
 
-print 'L1 = {}; L2 = {}; L3 = {}' .format( T21( a2, f1), T21( a2, freq), T21( a2, f2))
+# print 'L1 = {}; L2 = {}; L3 = {}' .format( T21( a2, f1), T21( a2, freq), T21( a2, f2))

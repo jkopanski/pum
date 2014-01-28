@@ -12,7 +12,7 @@ h   = 1.4 * const.milli
 t   = 0.035 * const.milli
 C   = 3.01
 Z0  = 50
-f0  = 1.34 * const.giga
+f0  = 1.35 * const.giga
 R   = 1
 
 y1 = np.sqrt( 10 ** ( - C / 10))
@@ -103,4 +103,6 @@ def coupling(f, f0, Z0, y1, y2):
 
 freq = np.linspace( 1.25 * const.giga, 1.45 * const.giga)
 line, = plt.plot( freq, coupling( freq, f0, Z0, y1, y2))
+plt.xlabel( 'czestotliwosc [Hz]')
+plt.ylabel( 'sprzezenie C [dB]')
 plt.show()

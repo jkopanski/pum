@@ -11,9 +11,9 @@ eps = 4.34
 h   = 1.4 * const.milli 
 t   = 0.035 * const.milli
 C   = 3.9
-Z0  = 50
+Z0  = 50.0
 f0  = 1.34 * const.giga
-R   = 1
+R   = 1.0
 
 k = 1/ np.sqrt( 10 ** ( C / 10) - 1)
 print( 'k = {}' .format( k))
@@ -30,9 +30,9 @@ def find_w2( w):
 def find_w3( w):
     return microstrip( w, t, h, f0, mu, eps) - Z3
 
-w1 = alg.newton_raphson( find_w1, 2 * const.milli, 3 * const.milli, (), tol=1e-10)
-w2 = alg.newton_raphson( find_w2, 2 * const.milli, 3 * const.milli, (), 1e-10)
-w3 = alg.newton_raphson( find_w3, 2 * const.milli, 3 * const.milli, (), 1e-10)
+w1 = alg.newton_raphson( find_w1, 1 * const.milli, 3 * const.milli, (), tol=1e-10)
+w2 = alg.newton_raphson( find_w2, 3 * const.milli, 5 * const.milli, (), 1e-10)
+w3 = alg.newton_raphson( find_w3, 1 * const.milli, 3 * const.milli, (), 1e-10)
 print( 'w1 = {}; w2 = {}; w3 = {}' .format( w1 / const.milli, w2 / const.milli, w3 / const.milli))
 
 print( 'spr')
@@ -140,4 +140,6 @@ def coupling(f, f0, Z0, R, k):
 
 freq = np.linspace( 1 * const.giga, 1.68 * const.giga)
 line, = plt.plot( freq, coupling( freq, f0, Z0, R, k))
+plt.xlabel( 'czestotliwosc [Hz]')
+plt.ylabel( 'sprzezenie C [dB]')
 plt.show()

@@ -9,8 +9,16 @@ Wrota wyjściowe tego dzielnika są obciążone rezystancjami $Z_{02} = Z_{03} =
 Projekt wykonać, przy założeniu, że środkowa częstotliwość pasma pracy $f_0 = 1.35~GHz$.
 Wyznaczyć częstotliwościowe charakterystyki dopasowania we wrotach wejściowych $WFS(f)$ i izolacji (separacji) pomiędzy wrotami $I(f)[dB]$ w paśmie od $f_1 = 1.25~GHz$ do $f_2 = 1.45~GHz$.
 
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=0.5\linewidth]{fig/zad14/div}
+  \caption{Schemat elektryczny dzielnika}
+  \label{fig:zad14:div}
+\end{figure}
+
 \section{Rozwiązanie}
 \subsection{Projekt dzielnika}
+Projektowany dzielnik jest przedstawiony na rys.~\ref{fig:zad14:div}.
 Ze względu na różne impedancje obciążenia i źródła dzielnik musi transformować impedancje.
 Przyjmując $Z_0 = 50~\Omega = q \times Z_0$, stąd $q = 0.7$.
 
@@ -26,12 +34,12 @@ gdzie:
   C     &= \frac{(2q - 1) u_0^2}{2(2 - u_0^2)}
   u_0   &= \sin\Big(\frac{w \pi}{4}\Big)
   w     &= \frac{2(f_2 - f_1)}{f_1 + f_2}
-\begin{align}
+\end{align}
 Dla danych z treści zadania otrzymuje się:
 \begin{align}
   Z_1 &= 54.4190599649~\Omega \nonumber \\
   Z_2 &= 64.3157011947~\Omega \nonumber
-\begin{align}
+\end{align}
 
 Rezystory separujące oblicza się z zależności:
 \begin{align}
@@ -45,7 +53,7 @@ co daje wynik:
   R_1 &= 307.005233567~\Omega \nonumber
 \end{align}
 
-\subsection{Charakterystyki sprzęgacza}
+\subsection{Charakterystyki dzielnika}
 W celu wyznaczenia charakterystyki częstotliwościowej dopasowania we wrotach wejściowych:
 \begin{equation}
   WFS(f) = \frac{1 + |S_{11}|}{1 - |S_{11}|} \label{eqn:zad14:wfs}
@@ -62,5 +70,20 @@ Niezbędne parametry macierzy rozproszenia S:
   S_{22}^{+-} &= \frac{A + jB}{C + jD} \\
 \end{align}
 Dokładne zależności podane zostały w~\cite{obwody}.
-Charakterystyki dzielnika zaprezentowano na rys.~\ref{fig:zad12:freq}.
+Charakterystyki dzielnika zaprezentowano na rys.~\ref{fig:zad14:iso}~i~\ref{fig:zad14:wfs}.
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[scale=0.5]{fig/zad14/iso}
+  \caption{Charakterystyka izolacji dzielnika}
+  \label{fig:zad14:iso}
+\end{figure}
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[scale=0.5]{fig/zad14/wfs}
+  \caption{WFS na wejściu dzielnika}
+  \label{fig:zad14:wfs}
+\end{figure}
+
 \end{document}

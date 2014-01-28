@@ -98,5 +98,11 @@ def isolation(f, f0, Z0, Z1, Z2, R1, R2):
 
 freq = np.linspace( f1, f2)
 line, = plt.plot( freq, swr( freq, f0, Z0, Z1, Z2, R1, R2))
+plt.xlabel( 'czestotliwosc [Hz]')
+plt.ylabel( 'WFS')
+plt.show()
+
 line2, = plt.plot( freq, isolation( freq, f0, Z0, Z1, Z2, R1, R2))
+plt.xlabel( 'czestotliwosc [Hz]')
+plt.ylabel( 'izolacja I [dB]')
 plt.show()

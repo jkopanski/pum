@@ -5,6 +5,8 @@ import pum.algorithms  as alg
 from pum.lines import *
 
 b = 9 * const.milli
+eps = 2.04
+mu = 1
 
 def find_z( d, mu, eps):
     return cylindrical_flat( d, b, mu, eps) - 30
@@ -16,7 +18,7 @@ print 'py d = {} mm' .format( d / const.milli)
 print 'my d = {} mm' .format( my_d / const.milli)
 
 z0 = cylindrical_flat( my_d, b, 1, 1)
-z1 = cylindrical_flat( my_d, b, 2.04, 1)
+z1 = cylindrical_flat( my_d, b, mu, eps)
 print 'Z(mu_r = 1; eps_r = 1) = {}' .format( z0)
 print 'Z(mu_r = 2.04; eps_r = 1) = {}' .format( z1)
 print 'Z change = {}' .format(z1 - z0)

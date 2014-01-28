@@ -1,4 +1,4 @@
-\documentclass[a4paper]{mwrep}
+\documentclass[a4paper,twoside]{mwrep}
 \usepackage{graphicx}
 \usepackage{subfig}
 \usepackage{url}
@@ -7,28 +7,52 @@
 \usepackage[OT4]{polski}
 \usepackage[utf8]{inputenc}
 \usepackage{fullpage}
+\usepackage{listings}
 
 \begin{document}
 \title{Projektowanie układów mikrofalowych (PUM)\\Projekt}
 
 \author{Jakub Kopański\\
 e-mail: J.Kopanski@imio.pw.edu.pl\\
+\\
+Prowadzący:\\
+prof. dr hab. Stanisław Rosłoniec
 }
 
 % make the title area
 \maketitle
+\cleardoublepage
 \tableofcontents
+\clearpage
+\listoffigures
+\cleardoublepage
 \subfile{zad1}
 \subfile{zad2} 
 \subfile{zad3}
-
+\subfile{zad4}
+\subfile{zad5}
 \subfile{zad6}
 \subfile{zad7}
 \subfile{zad8}
 \subfile{zad9}
 \subfile{zad10}
 \subfile{zad11}
-%\nocite{*}
+\subfile{zad12}
+\subfile{zad13}
+\subfile{zad14}
+\subfile{zad15}
+\subfile{zad16}
+\subfile{zad17}
+\appendix
+\chapter{Kody użytych funkcji}
+\section{pum/lines.py}
+\lstinputlisting[language=python,basicstyle=\scriptsize,frame=single,numbers=left,breaklines=true]{../pum/lines.py}
+\section{pum/fdm.py}
+\lstinputlisting[language=python,basicstyle=\scriptsize,frame=single,numbers=left,breaklines=true]{../pum/fdm.py}
+\section{pum/algorithms.py}
+\lstinputlisting[language=python,basicstyle=\scriptsize,frame=single,numbers=left,breaklines=true]{../pum/algorithms.py}
+
+\nocite{*}
 \bibliographystyle{IEEEtran}
 \bibliography{IEEEabrv,bibliography}
 
